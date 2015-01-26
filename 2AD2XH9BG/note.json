@@ -1,0 +1,128 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n- TypeTag\n Type erased in runtime, we can not run code like below:\n\n```\nclass Foo\nclass Bar extends Foo\n\ndef meth[A](xs: List[A]) \u003d xs match {\n  case _: List[String] \u003d\u003e \"list of strings\"\n  case _: List[Foo] \u003d\u003e \"list of foos\"\n}\n```\n\nTypeTag works for the fixing, which bring the compile time information to runtime\n\n```\nimport scala.reflect.runtime.universe._\n\nclass Foo\nclass Bar extends Foo\n\n\ndef meth[A : TypeTag](xs: List[A]) \u003d typeOf[A] match {\n  case t if t \u003d:\u003d typeOf[String] \u003d\u003e \"list of strings\"\n  case t if t \u003c:\u003c typeOf[Foo] \u003d\u003e \"list of foos\"\n}\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422275513555_-577227376",
+      "id": "20150126-073153_1982683555",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eTypeTag\n\u003cbr  /\u003eType erased in runtime, we can not run code like below:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eclass Foo\nclass Bar extends Foo\n\ndef meth[A](xs: List[A]) \u003d xs match {\n  case _: List[String] \u003d\u0026gt; \"list of strings\"\n  case _: List[Foo] \u003d\u0026gt; \"list of foos\"\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eTypeTag works for the fixing, which bring the compile time information to runtime\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.reflect.runtime.universe._\n\nclass Foo\nclass Bar extends Foo\n\n\ndef meth[A : TypeTag](xs: List[A]) \u003d typeOf[A] match {\n  case t if t \u003d:\u003d typeOf[String] \u003d\u0026gt; \"list of strings\"\n  case t if t \u0026lt;:\u0026lt; typeOf[Foo] \u003d\u0026gt; \"list of foos\"\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 26, 2015 7:31:53 AM",
+      "dateStarted": "Jan 26, 2015 7:36:16 AM",
+      "dateFinished": "Jan 26, 2015 7:36:16 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- ClassTag\n  A ClassTag[T] stores the erased class of a given type T, accessible via the runtimeClass field. This is particularly useful for instantiating Arrays whose element types are unknown at compile time.\n\n```\nimport scala.reflect.ClassTag\n\ndef mkArray[T: ClassTag](elems: T*) \u003d Array[T](elems: _*) // * means the variant length of argument\nmkArray(42, 13)\nmkArray(\"Japan\",\"Brazil\",\"Germany\")\nmkArray(12, \"a\")\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422275757495_-212733894",
+      "id": "20150126-073557_458758386",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eClassTag\n\u003cbr  /\u003eA ClassTag[T] stores the erased class of a given type T, accessible via the runtimeClass field. This is particularly useful for instantiating Arrays whose element types are unknown at compile time.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.reflect.ClassTag\n\ndef mkArray[T: ClassTag](elems: T*) \u003d Array[T](elems: _*) // * means the variant length of argument\nmkArray(42, 13)\nmkArray(\"Japan\",\"Brazil\",\"Germany\")\nmkArray(12, \"a\")\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 26, 2015 7:35:57 AM",
+      "dateStarted": "Jan 26, 2015 7:44:56 AM",
+      "dateFinished": "Jan 26, 2015 7:44:56 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- classOf \u0026 typeOf\n\n```\nclassTag[Int] // res99: scala.reflect.ClassTag[Int] \u003d ClassTag[int]\nclassTag[Int].runtimeClass // res100: Class[_] \u003d int\nclassTag[Int].newArray(3) // res101: Array[Int] \u003d Array(0, 0, 0)\nclassTag[List[Int]] // res104: scala.reflect.ClassTag[List[Int]] \u003d ClassTag[class scala.collection.immutable.List]\n\ntypeTag[List[Int]] //  res105: reflect.runtime.universe.TypeTag[List[Int]] \u003d TypeTag[scala.List[Int]]\ntypeTag[List[Int]].tpe // res107: reflect.runtime.universe.Type \u003d scala.List[Int]\ntypeOf[List[Int]] // res108: reflect.runtime.universe.Type \u003d scala.List[Int]\nres107 \u003d:\u003d res108 // true\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422276262975_-707813260",
+      "id": "20150126-074422_1393532601",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eclassOf \u0026amp; typeOf\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eclassTag[Int] // res99: scala.reflect.ClassTag[Int] \u003d ClassTag[int]\nclassTag[Int].runtimeClass // res100: Class[_] \u003d int\nclassTag[Int].newArray(3) // res101: Array[Int] \u003d Array(0, 0, 0)\nclassTag[List[Int]] // res104: scala.reflect.ClassTag[List[Int]] \u003d ClassTag[class scala.collection.immutable.List]\n\ntypeTag[List[Int]] //  res105: reflect.runtime.universe.TypeTag[List[Int]] \u003d TypeTag[scala.List[Int]]\ntypeTag[List[Int]].tpe // res107: reflect.runtime.universe.Type \u003d scala.List[Int]\ntypeOf[List[Int]] // res108: reflect.runtime.universe.Type \u003d scala.List[Int]\nres107 \u003d:\u003d res108 // true\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 26, 2015 7:44:22 AM",
+      "dateStarted": "Jan 26, 2015 7:57:14 AM",
+      "dateFinished": "Jan 26, 2015 7:57:14 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Instantiating a type in runtime\n\n```\nimport scala.reflect.runtime.{universe \u003d\u003e ru}\ncase class Person(name: String)\n\nval classPerson \u003d ru.typeOf[Person].typeSymbol.asClass\nval m \u003d ru.runtimeMirror(getClass.getClassLoader)\nval cm \u003d m.reflectClass(classPerson)\nval ctor \u003d ru.typeOf[Person].declaration(ru.nme.CONSTRUCTOR).asMethod\nval ctorm \u003d cm.reflectConstructor(ctor)\nval p \u003d ctorm(\"Mike\")\n```\n- Accessing a member of a type in runtime\n\n```\nimport scala.reflect.runtime.{universe \u003d\u003e ru}\n\ncase class Purchase(name: String, orderNumber: Int, var shipped: Boolean)\nval p \u003d Purchase(\"Jeff Lebowski\", 23819, false)\nval m \u003d ru.runtimeMirror(p.getClass.getClassLoader)\nval shippingTermSymb \u003d ru.typeOf[Purchase].declaration(ru.newTermName(\"shipped\")).asTerm\nval im \u003d m.reflect(p)\nval shippingFieldMirror \u003d im.reflectField(shippingTermSymb)\nshippingFieldMirror.get // false\nshippingFieldMirror.set(true) // set to true\nshippingFieldMirror.get // false\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422277034429_-1886953147",
+      "id": "20150126-075714_1119752636",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eInstantiating a type in runtime\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.reflect.runtime.{universe \u003d\u0026gt; ru}\ncase class Person(name: String)\n\nval classPerson \u003d ru.typeOf[Person].typeSymbol.asClass\nval m \u003d ru.runtimeMirror(getClass.getClassLoader)\nval cm \u003d m.reflectClass(classPerson)\nval ctor \u003d ru.typeOf[Person].declaration(ru.nme.CONSTRUCTOR).asMethod\nval ctorm \u003d cm.reflectConstructor(ctor)\nval p \u003d ctorm(\"Mike\")\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eAccessing a member of a type in runtime\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.reflect.runtime.{universe \u003d\u0026gt; ru}\n\ncase class Purchase(name: String, orderNumber: Int, var shipped: Boolean)\nval p \u003d Purchase(\"Jeff Lebowski\", 23819, false)\nval m \u003d ru.runtimeMirror(p.getClass.getClassLoader)\nval shippingTermSymb \u003d ru.typeOf[Purchase].declaration(ru.newTermName(\"shipped\")).asTerm\nval im \u003d m.reflect(p)\nval shippingFieldMirror \u003d im.reflectField(shippingTermSymb)\nshippingFieldMirror.get // false\nshippingFieldMirror.set(true) // set to true\nshippingFieldMirror.get // false\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 26, 2015 7:57:14 AM",
+      "dateStarted": "Jan 26, 2015 8:02:02 AM",
+      "dateFinished": "Jan 26, 2015 8:02:02 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Concrete Example\n\n```\n\nabstract class DataType\ncase object StringType extends DataType\ncase object BooleanType extends DataType\ncase object LongType extends DataType\ncase object IntegerType extends DataType\ncase object ShortType extends DataType\ncase object ByteType extends DataType\ncase object BinaryType extends DataType\ncase object DoubleType extends DataType\ncase object FloatType extends DataType\ncase class ArrayType(elementType: DataType) extends DataType\ncase class StructField(name: String, dataType: DataType)\ncase class StructType(fields: Seq[StructField]) extends DataType\n\nobject ScalaReflection {\n  val universe: scala.reflect.runtime.universe.type \u003d scala.reflect.runtime.universe\n  import universe._\n\n  // The Predef.Map is scala.collection.immutable.Map.\n  // Since the map values can be mutable, we explicitly import scala.collection.Map at here.\n  import scala.collection.Map\n  def schemaFor[T: TypeTag]: DataType \u003d schemaFor(typeOf[T])\n\n  /** Returns a catalyst DataType and its nullability for the given Scala Type using reflection. */\n  def schemaFor(tpe: `Type`): DataType \u003d {\n    val className: String \u003d tpe.erasure.typeSymbol.asClass.fullName\n    tpe match {\n      case t if t \u003c:\u003c typeOf[Option[_]] \u003d\u003e\n        val TypeRef(_, _, Seq(optType)) \u003d t\n        schemaFor(optType)\n      case t if t \u003c:\u003c typeOf[Array[Byte]] \u003d\u003e BinaryType\n      case t if t \u003c:\u003c typeOf[Array[_]] \u003d\u003e\n        sys.error(s\"Only Array[Byte] supported now, use Seq instead of $t\")\n      case t if t \u003c:\u003c typeOf[Seq[_]] \u003d\u003e\n        val TypeRef(_, _, Seq(elementType)) \u003d t\n        ArrayType(schemaFor(elementType))\n      case t if t \u003c:\u003c typeOf[Product] \u003d\u003e\n        val formalTypeArgs \u003d t.typeSymbol.asClass.typeParams\n        val TypeRef(_, _, actualTypeArgs) \u003d t\n        val constructorSymbol \u003d t.member(nme.CONSTRUCTOR)\n        val params \u003d if (constructorSymbol.isMethod) {\n          constructorSymbol.asMethod.paramss\n        } else {\n          // Find the primary constructor, and use its parameter ordering.\n          val primaryConstructorSymbol: Option[Symbol] \u003d constructorSymbol.asTerm.alternatives.find(\n            s \u003d\u003e s.isMethod \u0026\u0026 s.asMethod.isPrimaryConstructor)\n          if (primaryConstructorSymbol.isEmpty) {\n            sys.error(\"Internal SQL error: Product object did not have a primary constructor.\")\n          } else {\n            primaryConstructorSymbol.get.asMethod.paramss\n          }\n        }\n        StructType(\n          params.head.map { p \u003d\u003e\n            val dataType \u003d schemaFor(p.typeSignature.substituteTypes(formalTypeArgs, actualTypeArgs))\n            StructField(p.name.toString, dataType)\n          })\n      case t if t \u003c:\u003c typeOf[String] \u003d\u003e StringType\n      case t if t \u003c:\u003c typeOf[java.lang.Integer] \u003d\u003e IntegerType\n      case t if t \u003c:\u003c typeOf[java.lang.Long] \u003d\u003e LongType\n      case t if t \u003c:\u003c typeOf[java.lang.Double] \u003d\u003e DoubleType\n      case t if t \u003c:\u003c typeOf[java.lang.Float] \u003d\u003e FloatType\n      case t if t \u003c:\u003c typeOf[java.lang.Short] \u003d\u003e ShortType\n      case t if t \u003c:\u003c typeOf[java.lang.Byte] \u003d\u003e ByteType\n      case t if t \u003c:\u003c typeOf[java.lang.Boolean] \u003d\u003e BooleanType\n      case t if t \u003c:\u003c definitions.IntTpe \u003d\u003e IntegerType\n      case t if t \u003c:\u003c definitions.LongTpe \u003d\u003e LongType\n      case t if t \u003c:\u003c definitions.DoubleTpe \u003d\u003e DoubleType\n      case t if t \u003c:\u003c definitions.FloatTpe \u003d\u003e FloatType\n      case t if t \u003c:\u003c definitions.ShortTpe \u003d\u003e ShortType\n      case t if t \u003c:\u003c definitions.ByteTpe \u003d\u003e ByteType\n      case t if t \u003c:\u003c definitions.BooleanTpe \u003d\u003e BooleanType\n    }\n  }\n}\n\ncase class Person(name: String, age: Int)\ncase class Room(id: Long, owners: Seq[Person])\n\nScalaReflection.schemaFor[Room]\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422277322433_-1236329077",
+      "id": "20150126-080202_430986676",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eConcrete Example\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eabstract class DataType\ncase object StringType extends DataType\ncase object BooleanType extends DataType\ncase object LongType extends DataType\ncase object IntegerType extends DataType\ncase object ShortType extends DataType\ncase object ByteType extends DataType\ncase object BinaryType extends DataType\ncase object DoubleType extends DataType\ncase object FloatType extends DataType\ncase class ArrayType(elementType: DataType) extends DataType\ncase class StructField(name: String, dataType: DataType)\ncase class StructType(fields: Seq[StructField]) extends DataType\n\nobject ScalaReflection {\n  val universe: scala.reflect.runtime.universe.type \u003d scala.reflect.runtime.universe\n  import universe._\n\n  // The Predef.Map is scala.collection.immutable.Map.\n  // Since the map values can be mutable, we explicitly import scala.collection.Map at here.\n  import scala.collection.Map\n  def schemaFor[T: TypeTag]: DataType \u003d schemaFor(typeOf[T])\n\n  /** Returns a catalyst DataType and its nullability for the given Scala Type using reflection. */\n  def schemaFor(tpe: `Type`): DataType \u003d {\n    val className: String \u003d tpe.erasure.typeSymbol.asClass.fullName\n    tpe match {\n      case t if t \u0026lt;:\u0026lt; typeOf[Option[_]] \u003d\u0026gt;\n        val TypeRef(_, _, Seq(optType)) \u003d t\n        schemaFor(optType)\n      case t if t \u0026lt;:\u0026lt; typeOf[Array[Byte]] \u003d\u0026gt; BinaryType\n      case t if t \u0026lt;:\u0026lt; typeOf[Array[_]] \u003d\u0026gt;\n        sys.error(s\"Only Array[Byte] supported now, use Seq instead of $t\")\n      case t if t \u0026lt;:\u0026lt; typeOf[Seq[_]] \u003d\u0026gt;\n        val TypeRef(_, _, Seq(elementType)) \u003d t\n        ArrayType(schemaFor(elementType))\n      case t if t \u0026lt;:\u0026lt; typeOf[Product] \u003d\u0026gt;\n        val formalTypeArgs \u003d t.typeSymbol.asClass.typeParams\n        val TypeRef(_, _, actualTypeArgs) \u003d t\n        val constructorSymbol \u003d t.member(nme.CONSTRUCTOR)\n        val params \u003d if (constructorSymbol.isMethod) {\n          constructorSymbol.asMethod.paramss\n        } else {\n          // Find the primary constructor, and use its parameter ordering.\n          val primaryConstructorSymbol: Option[Symbol] \u003d constructorSymbol.asTerm.alternatives.find(\n            s \u003d\u0026gt; s.isMethod \u0026amp;\u0026amp; s.asMethod.isPrimaryConstructor)\n          if (primaryConstructorSymbol.isEmpty) {\n            sys.error(\"Internal SQL error: Product object did not have a primary constructor.\")\n          } else {\n            primaryConstructorSymbol.get.asMethod.paramss\n          }\n        }\n        StructType(\n          params.head.map { p \u003d\u0026gt;\n            val dataType \u003d schemaFor(p.typeSignature.substituteTypes(formalTypeArgs, actualTypeArgs))\n            StructField(p.name.toString, dataType)\n          })\n      case t if t \u0026lt;:\u0026lt; typeOf[String] \u003d\u0026gt; StringType\n      case t if t \u0026lt;:\u0026lt; typeOf[java.lang.Integer] \u003d\u0026gt; IntegerType\n      case t if t \u0026lt;:\u0026lt; typeOf[java.lang.Long] \u003d\u0026gt; LongType\n      case t if t \u0026lt;:\u0026lt; typeOf[java.lang.Double] \u003d\u0026gt; DoubleType\n      case t if t \u0026lt;:\u0026lt; typeOf[java.lang.Float] \u003d\u0026gt; FloatType\n      case t if t \u0026lt;:\u0026lt; typeOf[java.lang.Short] \u003d\u0026gt; ShortType\n      case t if t \u0026lt;:\u0026lt; typeOf[java.lang.Byte] \u003d\u0026gt; ByteType\n      case t if t \u0026lt;:\u0026lt; typeOf[java.lang.Boolean] \u003d\u0026gt; BooleanType\n      case t if t \u0026lt;:\u0026lt; definitions.IntTpe \u003d\u0026gt; IntegerType\n      case t if t \u0026lt;:\u0026lt; definitions.LongTpe \u003d\u0026gt; LongType\n      case t if t \u0026lt;:\u0026lt; definitions.DoubleTpe \u003d\u0026gt; DoubleType\n      case t if t \u0026lt;:\u0026lt; definitions.FloatTpe \u003d\u0026gt; FloatType\n      case t if t \u0026lt;:\u0026lt; definitions.ShortTpe \u003d\u0026gt; ShortType\n      case t if t \u0026lt;:\u0026lt; definitions.ByteTpe \u003d\u0026gt; ByteType\n      case t if t \u0026lt;:\u0026lt; definitions.BooleanTpe \u003d\u0026gt; BooleanType\n    }\n  }\n}\n\ncase class Person(name: String, age: Int)\ncase class Room(id: Long, owners: Seq[Person])\n\nScalaReflection.schemaFor[Room]\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 26, 2015 8:02:02 AM",
+      "dateStarted": "Jan 26, 2015 8:36:57 AM",
+      "dateFinished": "Jan 26, 2015 8:36:57 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422279417551_557542673",
+      "id": "20150126-083657_1668074919",
+      "dateCreated": "Jan 26, 2015 8:36:57 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Reflection",
+  "id": "2AD2XH9BG"
+}

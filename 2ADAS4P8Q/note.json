@@ -1,0 +1,194 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n- Function Definition\n\n```\ndef sum(a: Int, b: Int): Int \u003d {\n  return a + b\n}\ndef sum(a: Int, b: Int) \u003d {\n  a + b\n}\ndef sum(a: Int, b: Int \u003d 2) \u003d {        // val a \u003d sum(1, 3)   or val a \u003d sum(1)\n  a + b\n}\ndef fac(n: Int) \u003d if (n \u003d\u003d 0) 1 else n * fac(n – 1) // can not compile\ndef sum(a: Int, b: Int) \u003d a + b\ndef sum(a: Int)(b: Int) \u003d a + b\ndef sum(a: Int, b: Int) \u003d ???\ndef process(a: Int): Unit \u003d {}        // process(2)  \ndef start \u003d {2}                       // val a \u003d start\ndef start() \u003d {2}                     // val a \u003d start()\nprintln (process _)     // outputs \u003cfunction1\u003e|\nprintln (start _)       // outputs \u003cfunction0\u003e\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422013708721_-52257979",
+      "id": "20150123-064828_1303591454",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eFunction Definition\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003edef sum(a: Int, b: Int): Int \u003d {\n  return a + b\n}\ndef sum(a: Int, b: Int) \u003d {\n  a + b\n}\ndef sum(a: Int, b: Int \u003d 2) \u003d {        // val a \u003d sum(1, 3)   or val a \u003d sum(1)\n  a + b\n}\ndef fac(n: Int) \u003d if (n \u003d\u003d 0) 1 else n * fac(n – 1) // can not compile\ndef sum(a: Int, b: Int) \u003d a + b\ndef sum(a: Int)(b: Int) \u003d a + b\ndef sum(a: Int, b: Int) \u003d ???\ndef process(a: Int): Unit \u003d {}        // process(2)  \ndef start \u003d {2}                       // val a \u003d start\ndef start() \u003d {2}                     // val a \u003d start()\nprintln (process _)     // outputs \u0026lt;function1\u0026gt;|\nprintln (start _)       // outputs \u0026lt;function0\u0026gt;\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 6:48:28 AM",
+      "dateStarted": "Jan 23, 2015 9:41:54 AM",
+      "dateFinished": "Jan 23, 2015 9:41:54 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Function as Parameter of another Function\n\n```\n def oncePerSecond(callback: (Int) \u003d\u003e Unit) {\n   var i \u003d 0\n    while (i \u003c 5) { callback(i); Thread sleep 1000; i +\u003d 1 }\n  }\n  def timeFlies(i: Int) {\n    println(\"time flies like an arrow... \" + i)\n  }\n  oncePerSecond(timeFlies)\n```\n",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422024248393_-924562900",
+      "id": "20150123-094408_448621352",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eFunction as Parameter of another Function\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003e def oncePerSecond(callback: (Int) \u003d\u0026gt; Unit) {\n   var i \u003d 0\n    while (i \u0026lt; 5) { callback(i); Thread sleep 1000; i +\u003d 1 }\n  }\n  def timeFlies(i: Int) {\n    println(\"time flies like an arrow... \" + i)\n  }\n  oncePerSecond(timeFlies)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 9:44:08 AM",
+      "dateStarted": "Jan 23, 2015 9:44:54 AM",
+      "dateFinished": "Jan 23, 2015 9:44:54 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Anonymous Function\n\n```\n def oncePerSecond(callback: (Int) \u003d\u003e Unit) {\n   var i \u003d 0\n    while (i \u003c 5) { callback(i); Thread sleep 1000; i +\u003d 1 }\n  }\n  def timeFlies(i: Int) {\n    println(\"time flies like an arrow... \" + i)\n  }\n  oncePerSecond(timeFlies)\n\n  oncePerSecond((i: Int) \u003d\u003e { println (\"I am an anonymous function.\" +i) })\n\n  val d \u003d (i: Int) \u003d\u003e { println(\"test2..\" + i) }\n  oncePerSecond(d)\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422024283493_228575526",
+      "id": "20150123-094443_228841127",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eAnonymous Function\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003e def oncePerSecond(callback: (Int) \u003d\u0026gt; Unit) {\n   var i \u003d 0\n    while (i \u0026lt; 5) { callback(i); Thread sleep 1000; i +\u003d 1 }\n  }\n  def timeFlies(i: Int) {\n    println(\"time flies like an arrow... \" + i)\n  }\n  oncePerSecond(timeFlies)\n\n  oncePerSecond((i: Int) \u003d\u0026gt; { println (\"I am an anonymous function.\" +i) })\n\n  val d \u003d (i: Int) \u003d\u0026gt; { println(\"test2..\" + i) }\n  oncePerSecond(d)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 9:44:43 AM",
+      "dateStarted": "Jan 23, 2015 9:45:38 AM",
+      "dateFinished": "Jan 23, 2015 9:45:38 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n- Nest Function\n\n```\ndef sumDoubles(n: Int): Int \u003d {\n  def dbl(a: Int) \u003d 2 * a\n\n  if(n \u003e 0) {\n    dbl(n) + sumDoubles(n - 1)\n  } else {\n    0 \n  }              \n}\n```\n\nEquivalent to\n\n```\ndef dbl(a: Int) \u003d 2 * a\n\ndef sumDoubles(n: Int): Int \u003d {\n  if(n \u003e 0) {\n    dbl(n) + sumDoubles(n - 1)\n  } else {\n    0 \n  }              \n}\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422024338900_2105673464",
+      "id": "20150123-094538_1580274894",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eNest Function\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003edef sumDoubles(n: Int): Int \u003d {\n  def dbl(a: Int) \u003d 2 * a\n\n  if(n \u0026gt; 0) {\n    dbl(n) + sumDoubles(n - 1)\n  } else {\n    0 \n  }              \n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eEquivalent to\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edef dbl(a: Int) \u003d 2 * a\n\ndef sumDoubles(n: Int): Int \u003d {\n  if(n \u0026gt; 0) {\n    dbl(n) + sumDoubles(n - 1)\n  } else {\n    0 \n  }              \n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 9:45:38 AM",
+      "dateStarted": "Jan 23, 2015 9:49:03 AM",
+      "dateFinished": "Jan 23, 2015 9:49:03 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Implicit Function\n\n```\n    import java.math.{BigDecimal \u003d\u003e JDecimal, MathContext}\n    import scala.math.{BigDecimal \u003d\u003e SDecimal}\n\n    val a1 \u003d new JDecimal(1231.123)  // Or produced by Java API\n    val a2 \u003d new JDecimal(456.456)    // Or produced by Java API\n     \n    def square(s: SDecimal) \u003d s * s      // The Scala API requires ScalaDecimal\n    def J2SDecimal(j: JDecimal) \u003d new SDecimal(j,  MathContext.DECIMAL128)\n    \n    //////////////////////////////////////\n    val b3 \u003d square(J2SDecimal(a1))\n    val b4 \u003d square(J2SDecimal(a2))\n    /////////////////////////////////////  \u003d\u003d\u003e\n    \n    implicit def J2SDecimal(j: JDecimal) \u003d new SDecimal(j,  MathContext.DECIMAL128)\n    \n    val b1 \u003d square(a1)\n    val b2 \u003d square(a2)\n\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422024413382_-523022966",
+      "id": "20150123-094653_1402422265",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eImplicit Function\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003e    import java.math.{BigDecimal \u003d\u0026gt; JDecimal, MathContext}\n    import scala.math.{BigDecimal \u003d\u0026gt; SDecimal}\n\n    val a1 \u003d new JDecimal(1231.123)  // Or produced by Java API\n    val a2 \u003d new JDecimal(456.456)    // Or produced by Java API\n\n    def square(s: SDecimal) \u003d s * s      // The Scala API requires ScalaDecimal\n    def J2SDecimal(j: JDecimal) \u003d new SDecimal(j,  MathContext.DECIMAL128)\n\n    //////////////////////////////////////\n    val b3 \u003d square(J2SDecimal(a1))\n    val b4 \u003d square(J2SDecimal(a2))\n    /////////////////////////////////////  \u003d\u003d\u0026gt;\n\n    implicit def J2SDecimal(j: JDecimal) \u003d new SDecimal(j,  MathContext.DECIMAL128)\n\n    val b1 \u003d square(a1)\n    val b2 \u003d square(a2)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 9:46:53 AM",
+      "dateStarted": "Jan 23, 2015 9:51:00 AM",
+      "dateFinished": "Jan 23, 2015 9:51:00 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n- Currying Function\n\n-- Example 1\n\n```\ndef sum(a: Int)(b: Int) \u003d a + b\nval add5 \u003d sum(5) _\nprintln (add5(20))             // outputs 25\n\n```\n\n-- Example 2\n\n```\ndef sum(a: Int, b: Int) \u003d a + b\nval add5: Int\u003d\u003eInt \u003d sum(_, 5)\nprintln (add5(20))             // outputs 25\n```\n\n-- Example 3\n\n```\ndef sum(a: Int, b: Int) \u003d a + b\ndef add5(x: Int) \u003d sum(x, 5)\nprintln (add5(20))             // outputs 25\n```\n\n-- Example 4\n\n```\ndef query(conn: Connection)(c: Criteria) : Seq[Person] \u003d {\n   ctx.sql(sql).collect.map(…..)\n}\nval queryBackup\u003d query(backupConnection) _\nval queryOnline \u003d query(onlineConnection) _\nfor (criteria \u003c- criterias) {\n  assert(queryBackup(critera) \u003d\u003d queryOnline(critera))\n}\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422024653656_-1088666791",
+      "id": "20150123-095053_528032790",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eCurrying Function\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u0026ndash; Example 1\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edef sum(a: Int)(b: Int) \u003d a + b\nval add5 \u003d sum(5) _\nprintln (add5(20))             // outputs 25\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u0026ndash; Example 2\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edef sum(a: Int, b: Int) \u003d a + b\nval add5: Int\u003d\u0026gt;Int \u003d sum(_, 5)\nprintln (add5(20))             // outputs 25\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u0026ndash; Example 3\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edef sum(a: Int, b: Int) \u003d a + b\ndef add5(x: Int) \u003d sum(x, 5)\nprintln (add5(20))             // outputs 25\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u0026ndash; Example 4\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edef query(conn: Connection)(c: Criteria) : Seq[Person] \u003d {\n   ctx.sql(sql).collect.map(…..)\n}\nval queryBackup\u003d query(backupConnection) _\nval queryOnline \u003d query(onlineConnection) _\nfor (criteria \u0026lt;- criterias) {\n  assert(queryBackup(critera) \u003d\u003d queryOnline(critera))\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 9:50:53 AM",
+      "dateStarted": "Jan 23, 2015 9:54:12 AM",
+      "dateFinished": "Jan 23, 2015 9:54:12 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Partial Function\n\n-- Example 1\n\n```\nval fraction \u003d new PartialFunction[Int, Int] {\n    def apply(d: Int) \u003d 42 / d\n    def isDefinedAt(d: Int) \u003d d !\u003d 0\n}\n\nfraction.isDefinedAt(42)\nfraction.isDefinedAt(0)\nfraction(42)\nfraction(0)\n```\n\n-- Example 2\n\n```\nval fraction: PartialFunction[Int, Int] \u003d\n    { case d: Int if d !\u003d 0 ⇒ 42 / d }\n\nfraction(42)\nfraction(0)\n\n```\n\n",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422024852024_378855815",
+      "id": "20150123-095412_361974273",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003ePartial Function\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u0026ndash; Example 1\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eval fraction \u003d new PartialFunction[Int, Int] {\n    def apply(d: Int) \u003d 42 / d\n    def isDefinedAt(d: Int) \u003d d !\u003d 0\n}\n\nfraction.isDefinedAt(42)\nfraction.isDefinedAt(0)\nfraction(42)\nfraction(0)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u0026ndash; Example 2\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eval fraction: PartialFunction[Int, Int] \u003d\n    { case d: Int if d !\u003d 0 ⇒ 42 / d }\n\nfraction(42)\nfraction(0)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 9:54:12 AM",
+      "dateStarted": "Jan 23, 2015 9:58:33 AM",
+      "dateFinished": "Jan 23, 2015 9:58:33 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- High Order Function\n\n-- Example 1\n\n```\ndef safeStringOp(s: String, f: String \u003d\u003e String) \u003d {\n  if (s !\u003d null) f(s) else s\n}\n\ndef reverser(s: String) \u003d s.reverse\nsafeStringOp(null, reverser)\nsafeStringOp(\"Ready\", reverser)\n```\n\n-- Example 2\n\n```\n def whileLoop(cond: \u003d\u003e Boolean)(body: \u003d\u003e Unit): Unit \u003d\n    if (cond) {\n      body\n      whileLoop(cond)(body)\n    }\n    \n  var i \u003d 10\n  whileLoop (i \u003e 0) {\n    println(i)\n    i -\u003d 1\n  }\n\n  def loop(body: \u003d\u003e Unit): LoopUnlessCond \u003d\n    new LoopUnlessCond(body)\n    \n  protected class LoopUnlessCond(body: \u003d\u003e Unit) {\n    def unless(cond: \u003d\u003e Boolean) {\n      body\n      if (!cond) unless(cond)\n    }\n  }\n\n  var i \u003d 10\n  loop {\n    println(\"i \u003d \" + i)\n    i -\u003d 1\n  } unless (i \u003d\u003d 0)\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422025113573_-751584071",
+      "id": "20150123-095833_422249258",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eHigh Order Function\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u0026ndash; Example 1\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edef safeStringOp(s: String, f: String \u003d\u0026gt; String) \u003d {\n  if (s !\u003d null) f(s) else s\n}\n\ndef reverser(s: String) \u003d s.reverse\nsafeStringOp(null, reverser)\nsafeStringOp(\"Ready\", reverser)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u0026ndash; Example 2\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e def whileLoop(cond: \u003d\u0026gt; Boolean)(body: \u003d\u0026gt; Unit): Unit \u003d\n    if (cond) {\n      body\n      whileLoop(cond)(body)\n    }\n\n  var i \u003d 10\n  whileLoop (i \u0026gt; 0) {\n    println(i)\n    i -\u003d 1\n  }\n\n  def loop(body: \u003d\u0026gt; Unit): LoopUnlessCond \u003d\n    new LoopUnlessCond(body)\n\n  protected class LoopUnlessCond(body: \u003d\u0026gt; Unit) {\n    def unless(cond: \u003d\u0026gt; Boolean) {\n      body\n      if (!cond) unless(cond)\n    }\n  }\n\n  var i \u003d 10\n  loop {\n    println(\"i \u003d \" + i)\n    i -\u003d 1\n  } unless (i \u003d\u003d 0)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 9:58:33 AM",
+      "dateStarted": "Jan 23, 2015 10:00:54 AM",
+      "dateFinished": "Jan 23, 2015 10:00:54 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422025254098_-1819415510",
+      "id": "20150123-100054_2019098300",
+      "dateCreated": "Jan 23, 2015 10:00:54 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Functions",
+  "id": "2ADAS4P8Q"
+}

@@ -1,0 +1,112 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n- Future(Class) \u0026 future(method)\n\n```\nimport scala.concurrent._\nimport scala.util.{Success, Failure}\nimport ExecutionContext.Implicits.global\n\n// A thread start after call the future method\nval f: Future[Seq[Long]] \u003d future {\n  // do some db query\n  Thread.sleep(2)\n  Seq(49,59,29,60,20) // this is the thread return or can throws exception\n}\n\nf onComplete { // register the call back\n  case Success(ids) \u003d\u003e for(id \u003c- ids) println (id)\n  case Failure(t) \u003d\u003e println(\"Error has occured:\" + t.getMessage)\n}\n// Or\nf onFailure { // register the call back\n  case t \u003d\u003e println(\"An error has occured: \" + t.getMessage) // this is partial function\n}\nf onSuccess {\n  case ids \u003d\u003e for (id \u003c- ids) println(id) // this is partial function\n}\n// can be invoked couple of times\nf onSuccess {\n  case ids \u003d\u003e for (id \u003c- ids) println(id) // this is partial function\n}\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422197078469_881494653",
+      "id": "20150125-094438_1184337444",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eFuture(Class) \u0026amp; future(method)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.concurrent._\nimport scala.util.{Success, Failure}\nimport ExecutionContext.Implicits.global\n\n// A thread start after call the future method\nval f: Future[Seq[Long]] \u003d future {\n  // do some db query\n  Thread.sleep(2)\n  Seq(49,59,29,60,20) // this is the thread return or can throws exception\n}\n\nf onComplete { // register the call back\n  case Success(ids) \u003d\u0026gt; for(id \u0026lt;- ids) println (id)\n  case Failure(t) \u003d\u0026gt; println(\"Error has occured:\" + t.getMessage)\n}\n// Or\nf onFailure { // register the call back\n  case t \u003d\u0026gt; println(\"An error has occured: \" + t.getMessage) // this is partial function\n}\nf onSuccess {\n  case ids \u003d\u0026gt; for (id \u0026lt;- ids) println(id) // this is partial function\n}\n// can be invoked couple of times\nf onSuccess {\n  case ids \u003d\u0026gt; for (id \u0026lt;- ids) println(id) // this is partial function\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 9:44:38 AM",
+      "dateStarted": "Jan 25, 2015 11:00:22 AM",
+      "dateFinished": "Jan 25, 2015 11:00:22 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Functional Composition\n\n```\nimport scala.concurrent._\nimport scala.util.{Success, Failure}\nimport ExecutionContext.Implicits.global\n\nval f: Future[Seq[Long]] \u003d future {\n  // do some index query\n  Thread.sleep(2000)\n  Seq(49,59,29,60,20)\n}\n\nval f2 \u003d f map { ids \u003d\u003e\n  // do the cache query\n  Thread.sleep(2000)\n  for (id \u003c- ids) yield {\n    \"Article\" + id\n  }\n}\n\nf2 onComplete {\n  case Success(articles) \u003d\u003e for(article \u003c- articles) println (article)\n  case Failure(t) \u003d\u003e println(\"Error has occured:\" + t.getMessage)\n}\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422201622555_1351767246",
+      "id": "20150125-110022_2064294687",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eFunctional Composition\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.concurrent._\nimport scala.util.{Success, Failure}\nimport ExecutionContext.Implicits.global\n\nval f: Future[Seq[Long]] \u003d future {\n  // do some index query\n  Thread.sleep(2000)\n  Seq(49,59,29,60,20)\n}\n\nval f2 \u003d f map { ids \u003d\u0026gt;\n  // do the cache query\n  Thread.sleep(2000)\n  for (id \u0026lt;- ids) yield {\n    \"Article\" + id\n  }\n}\n\nf2 onComplete {\n  case Success(articles) \u003d\u0026gt; for(article \u0026lt;- articles) println (article)\n  case Failure(t) \u003d\u0026gt; println(\"Error has occured:\" + t.getMessage)\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 11:00:22 AM",
+      "dateStarted": "Jan 25, 2015 11:01:25 AM",
+      "dateFinished": "Jan 25, 2015 11:01:25 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- For-Comprehensions\n\n```\nimport scala.concurrent._\nimport scala.util.{Success, Failure}\nimport ExecutionContext.Implicits.global\n\nval f1: Future[Seq[Long]] \u003d future {\n  // do some index query1\n  Thread.sleep(2000)\n  Seq(49,59,29,60,20)\n}\n\nval f2: Future[Seq[Long]] \u003d future {\n  // do some index query2\n  Thread.sleep(2000)\n  Seq(60,20,39,23)\n}\n\nval commonArticle \u003d for(ids1 \u003c- f1; ids2 \u003c- f2) yield {\n  // find the common set\n  (ids1.toSet \u0026 ids2.toSet) map { i \u003d\u003e\n    // do the cache query\n    \"Article\" + i\n  }\n}\n\ncommonArticle onComplete {\n  case Success(articles) \u003d\u003e for(article \u003c- articles) println (article)\n  case Failure(t) \u003d\u003e println(\"Error has occured:\" + t.getMessage)\n}\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422201685433_-1038384867",
+      "id": "20150125-110125_1002261334",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eFor-Comprehensions\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.concurrent._\nimport scala.util.{Success, Failure}\nimport ExecutionContext.Implicits.global\n\nval f1: Future[Seq[Long]] \u003d future {\n  // do some index query1\n  Thread.sleep(2000)\n  Seq(49,59,29,60,20)\n}\n\nval f2: Future[Seq[Long]] \u003d future {\n  // do some index query2\n  Thread.sleep(2000)\n  Seq(60,20,39,23)\n}\n\nval commonArticle \u003d for(ids1 \u0026lt;- f1; ids2 \u0026lt;- f2) yield {\n  // find the common set\n  (ids1.toSet \u0026amp; ids2.toSet) map { i \u003d\u0026gt;\n    // do the cache query\n    \"Article\" + i\n  }\n}\n\ncommonArticle onComplete {\n  case Success(articles) \u003d\u0026gt; for(article \u0026lt;- articles) println (article)\n  case Failure(t) \u003d\u0026gt; println(\"Error has occured:\" + t.getMessage)\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 11:01:25 AM",
+      "dateStarted": "Jan 25, 2015 11:10:57 AM",
+      "dateFinished": "Jan 25, 2015 11:10:57 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- [Akka](http://www.reactive.io/tips/2014/03/28/getting-started-with-actor-based-programming-using-scala-and-akka/)\nAkka is part of the Scala standard library (the old actor is retired)\n\n\n```\nimport akka.actor.{ActorLogging, ActorSystem, Props}\n\ncase class Ticket(quantity: Int)\ncase class FullPint(number: Int)\ncase class EmptyPint(number: Int)\n\nclass Person extends Actor with ActorLogging {\n  def receive \u003d {\n    case FullPint(number) \u003d\u003e\n      log.info(s\"I\u0027ll make short work of pint $number\")\n\n      Thread.sleep(1000)\n\n      log.info(s\"Done, here is the empty glass for pint $number\")\n\n      sender ! EmptyPint(number)\n  }\n}\n\nclass BarTender extends Actor with ActorLogging {\n  var total \u003d 0\n\n  def receive \u003d {\n    case Ticket(quantity) \u003d\u003e\n      total \u003d total + quantity\n\n      log.info(s\"I\u0027ll get $quantity pints for [${sender.path}]\")\n\n      for (number \u003c- 1 to quantity) {\n        log.info(s\"Pint $number is coming right up for [${sender.path}]\")\n\n        Thread.sleep(1000)\n\n        log.info(s\"Pint $number is ready, here you go [${sender.path}]\")\n\n        sender ! FullPint(number)\n      }\n\n    case EmptyPint(number) \u003d\u003e\n      total match {\n        case 1 \u003d\u003e\n          log.info(\"Ya\u0027ll drank those pints quick, time to close up shop\")\n\n          context.system.shutdown()\n\n        case n \u003d\u003e\n          total \u003d total - 1\n\n          log.info(s\"You drank pint $number quick, but there are still $total pints left\")\n      }\n  }\n}\n\nval system \u003d ActorSystem(\"howdy-akka\")\n\nval zed \u003d system.actorOf(Props(new BarTender), \"zed\")\n\nval alice   \u003d system.actorOf(Props(new Person), \"alice\")\nval bob     \u003d system.actorOf(Props(new Person), \"bob\")\nval charlie \u003d system.actorOf(Props(new Person), \"charlie\")\n\nzed.tell(Ticket(2), alice)\nzed.tell(Ticket(3), bob)\nzed.tell(Ticket(1), charlie)\n\nsystem.awaitTermination()\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {
+          "sender.path": {
+            "name": "sender.path",
+            "defaultValue": "",
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1422202257108_1618854670",
+      "id": "20150125-111057_1727970343",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"http://www.reactive.io/tips/2014/03/28/getting-started-with-actor-based-programming-using-scala-and-akka/\"\u003eAkka\u003c/a\u003e\n\u003cbr  /\u003eAkka is part of the Scala standard library (the old actor is retired)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport akka.actor.{ActorLogging, ActorSystem, Props}\n\ncase class Ticket(quantity: Int)\ncase class FullPint(number: Int)\ncase class EmptyPint(number: Int)\n\nclass Person extends Actor with ActorLogging {\n  def receive \u003d {\n    case FullPint(number) \u003d\u0026gt;\n      log.info(s\"I\u0027ll make short work of pint $number\")\n\n      Thread.sleep(1000)\n\n      log.info(s\"Done, here is the empty glass for pint $number\")\n\n      sender ! EmptyPint(number)\n  }\n}\n\nclass BarTender extends Actor with ActorLogging {\n  var total \u003d 0\n\n  def receive \u003d {\n    case Ticket(quantity) \u003d\u0026gt;\n      total \u003d total + quantity\n\n      log.info(s\"I\u0027ll get $quantity pints for [${sender.path}]\")\n\n      for (number \u0026lt;- 1 to quantity) {\n        log.info(s\"Pint $number is coming right up for [${sender.path}]\")\n\n        Thread.sleep(1000)\n\n        log.info(s\"Pint $number is ready, here you go [${sender.path}]\")\n\n        sender ! FullPint(number)\n      }\n\n    case EmptyPint(number) \u003d\u0026gt;\n      total match {\n        case 1 \u003d\u0026gt;\n          log.info(\"Ya\u0027ll drank those pints quick, time to close up shop\")\n\n          context.system.shutdown()\n\n        case n \u003d\u0026gt;\n          total \u003d total - 1\n\n          log.info(s\"You drank pint $number quick, but there are still $total pints left\")\n      }\n  }\n}\n\nval system \u003d ActorSystem(\"howdy-akka\")\n\nval zed \u003d system.actorOf(Props(new BarTender), \"zed\")\n\nval alice   \u003d system.actorOf(Props(new Person), \"alice\")\nval bob     \u003d system.actorOf(Props(new Person), \"bob\")\nval charlie \u003d system.actorOf(Props(new Person), \"charlie\")\n\nzed.tell(Ticket(2), alice)\nzed.tell(Ticket(3), bob)\nzed.tell(Ticket(1), charlie)\n\nsystem.awaitTermination()\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 11:10:57 AM",
+      "dateStarted": "Jan 25, 2015 11:19:21 AM",
+      "dateFinished": "Jan 25, 2015 11:19:21 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422202761802_569215866",
+      "id": "20150125-111921_649294236",
+      "dateCreated": "Jan 25, 2015 11:19:21 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Multithread \u0026 Actor",
+  "id": "2AEC2GJ33"
+}

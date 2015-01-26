@@ -1,0 +1,260 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n- Generic Type\n\n```\nclass Stack[T] {\n  var elems: List[T] \u003d Nil\n  def push(x: T) { elems \u003d x :: elems }\n  def top: T \u003d elems.head\n  def pop() { elems \u003d elems.tail }\n}\n\nval stack \u003d new Stack[Int]\nstack.push(1)\nstack.push(\u0027a\u0027)\nprintln(stack.top)\nstack.pop()\nprintln(stack.top)\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422013718720_-246525525",
+      "id": "20150123-064838_754585108",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eGeneric Type\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eclass Stack[T] {\n  var elems: List[T] \u003d Nil\n  def push(x: T) { elems \u003d x :: elems }\n  def top: T \u003d elems.head\n  def pop() { elems \u003d elems.tail }\n}\n\nval stack \u003d new Stack[Int]\nstack.push(1)\nstack.push(\u0027a\u0027)\nprintln(stack.top)\nstack.pop()\nprintln(stack.top)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 6:48:38 AM",
+      "dateStarted": "Jan 25, 2015 2:05:13 AM",
+      "dateFinished": "Jan 25, 2015 2:05:13 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Polymorphic Method\n\n```\nobject Traversal {\n  import scala.reflect.ClassTag\n  def map[FROM, TO: ClassTag](input: Array[FROM], f: FROM \u003d\u003e TO): Array[TO] \u003d {\n    val dest \u003d new Array[TO](input.length)\n    var i \u003d 0\n    while (i \u003c input.length) {\n      dest(i) \u003d f(input(i))\n      i +\u003d 1\n    }\n    \n    dest\n  }\n}\n\nval a \u003d Array(1, 2, 3, 4, 5)\nval b \u003d Traversal.map(a, (x: Int) \u003d\u003e x.toDouble)\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422169513628_2108141500",
+      "id": "20150125-020513_964929919",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003ePolymorphic Method\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eobject Traversal {\n  import scala.reflect.ClassTag\n  def map[FROM, TO: ClassTag](input: Array[FROM], f: FROM \u003d\u0026gt; TO): Array[TO] \u003d {\n    val dest \u003d new Array[TO](input.length)\n    var i \u003d 0\n    while (i \u0026lt; input.length) {\n      dest(i) \u003d f(input(i))\n      i +\u003d 1\n    }\n\n    dest\n  }\n}\n\nval a \u003d Array(1, 2, 3, 4, 5)\nval b \u003d Traversal.map(a, (x: Int) \u003d\u0026gt; x.toDouble)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 2:05:13 AM",
+      "dateStarted": "Jan 25, 2015 2:05:46 AM",
+      "dateFinished": "Jan 25, 2015 2:05:46 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Covariance\n\n1. covariant (C[+A]): C[A] is a subclass of C[B] if A is a sub class of B. \n   For example: List[String] is subclass of List[Any], as String is the sub class of Any\n2. contravariant (C[-A]: C[A] is a subclass of C[B] if B is a sub class of A\n   For example:\n   \n   ```\n     trait Function1[-P, +R] {\n       def apply(p: P): R\n     }\n     case class List[+A](head: A, tail: List[A]) {\n       def prepend[U \u003e: A](e: U): List[U] \u003d List(e, this)\n     }\n\n   ```\n   \n3. invariant (C[A]): C[A] is not related with C[B] even if A is a subclass of B\n  For example:\n  java.util.List[String] V.S. java.util.List[Object] (no relation between them)\n\n  ```java\n    Object[] arr \u003d new Integer[1];\n    \n    // RuntimeException\n    arr[0] \u003d \"Hello, there!\"; // And it’s not allowed in Scala during compile time, as Array is invariant in Scala.\n   ```\n",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422169546709_1352356742",
+      "id": "20150125-020546_519644261",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003e\u003cp\u003eCovariance\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003ecovariant (C[+A]): C[A] is a subclass of C[B] if A is a sub class of B.\n\u003cbr  /\u003eFor example: List[String] is subclass of List[Any], as String is the sub class of Any\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003econtravariant (C[-A]: C[A] is a subclass of C[B] if B is a sub class of A\n\u003cbr  /\u003eFor example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e trait Function1[-P, +R] {\n   def apply(p: P): R\n }\n case class List[+A](head: A, tail: List[A]) {\n   def prepend[U \u0026gt;: A](e: U): List[U] \u003d List(e, this)\n }\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003einvariant (C[A]): C[A] is not related with C[B] even if A is a subclass of B\n\u003cbr  /\u003eFor example:\n\u003cbr  /\u003ejava.util.List[String] V.S. java.util.List[Object] (no relation between them)\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"java\"\u003eObject[] arr \u003d new Integer[1];\n\n// RuntimeException\narr[0] \u003d \"Hello, there!\"; // And it’s not allowed in Scala during compile time, as Array is invariant in Scala.\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 2:05:46 AM",
+      "dateStarted": "Jan 25, 2015 2:22:17 AM",
+      "dateFinished": "Jan 25, 2015 2:22:17 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Invariant\n\n```\nval a \u003d new Array[Int](2)\na(0) \u003d 1\na(1) \u003d 2\na(0) \u003d “test” // compilation error \n\n\ncase class ListNode1[T](h: T, t: ListNode1[T]) {\n  def head: T \u003d h\n  def tail: ListNode1[T] \u003d t\n  def prepend(elem: T): ListNode1[T] \u003d\n    ListNode1(elem, this)\n}\nval a \u003d ListNode1[String](null, null)\na.prepend(\"a\").prepend(\"b\") // ListNode1[String]\na.prepend(\"a\").prepend(123) // error\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422170153139_1937276882",
+      "id": "20150125-021553_438649215",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eInvariant\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eval a \u003d new Array[Int](2)\na(0) \u003d 1\na(1) \u003d 2\na(0) \u003d “test” // compilation error \n\n\ncase class ListNode1[T](h: T, t: ListNode1[T]) {\n  def head: T \u003d h\n  def tail: ListNode1[T] \u003d t\n  def prepend(elem: T): ListNode1[T] \u003d\n    ListNode1(elem, this)\n}\nval a \u003d ListNode1[String](null, null)\na.prepend(\"a\").prepend(\"b\") // ListNode1[String]\na.prepend(\"a\").prepend(123) // error\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 2:15:53 AM",
+      "dateStarted": "Jan 25, 2015 2:22:55 AM",
+      "dateFinished": "Jan 25, 2015 2:22:55 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Upper Bound\n\n```\nimport java.util.{List \u003d\u003e JList, ArrayList \u003d\u003e JArrayList}\nobject CollectionTest {\n  def combine[T \u003c:JList[String]](left: T, right: T): T \u003d {\n    left.addAll(right)\n    left\n  }\n}\n\nval a \u003d new JArrayList[String]()\nval b \u003d new JArrayList[String]()\na.add(\"a\")\na.add(\"b\")\nb.add(\"c\")\nb.add(\"d\")\nval c \u003d CollectionTest.combine(a, b)\n```\n\nA more concrete Example:\n\n```\nabstract class TreeNode[BaseType \u003c: TreeNode[BaseType]] {\n  def left: BaseType\n  def right: BaseType\n}\n\ntrait Expression extends TreeNode[Expression] {\n  def eval: Int\n}\n\ntrait Leaf extends Expression {\n  def left: Expression \u003d ???\n  def right: Expression \u003d ???\n}\n\ncase class Literal(value: Int) extends Leaf {\n  def eval \u003d value\n}\ncase class Add(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval + right.eval\n}\ncase class Minus(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval - right.eval\n}\ncase class Multiply(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval * right.eval\n}\ncase class Divide(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval / right.eval\n}\n```\n",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422170575096_-421468671",
+      "id": "20150125-022255_562387789",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eUpper Bound\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport java.util.{List \u003d\u0026gt; JList, ArrayList \u003d\u0026gt; JArrayList}\nobject CollectionTest {\n  def combine[T \u0026lt;:JList[String]](left: T, right: T): T \u003d {\n    left.addAll(right)\n    left\n  }\n}\n\nval a \u003d new JArrayList[String]()\nval b \u003d new JArrayList[String]()\na.add(\"a\")\na.add(\"b\")\nb.add(\"c\")\nb.add(\"d\")\nval c \u003d CollectionTest.combine(a, b)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eA more concrete Example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eabstract class TreeNode[BaseType \u0026lt;: TreeNode[BaseType]] {\n  def left: BaseType\n  def right: BaseType\n}\n\ntrait Expression extends TreeNode[Expression] {\n  def eval: Int\n}\n\ntrait Leaf extends Expression {\n  def left: Expression \u003d ???\n  def right: Expression \u003d ???\n}\n\ncase class Literal(value: Int) extends Leaf {\n  def eval \u003d value\n}\ncase class Add(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval + right.eval\n}\ncase class Minus(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval - right.eval\n}\ncase class Multiply(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval * right.eval\n}\ncase class Divide(left: Expression, right: Expression) extends Expression {\n  def eval \u003d left.eval / right.eval\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 2:22:55 AM",
+      "dateStarted": "Jan 25, 2015 2:25:30 AM",
+      "dateFinished": "Jan 25, 2015 2:25:30 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Lower Bound\n\n```\ncase class ListNode[+T](h: T, t: ListNode[T]) {\n  def head: T \u003d h\n  def tail: ListNode[T] \u003d t\n  \n  // U must be the parent class(or the same class) of T\n  def prepend[U \u003e: T](elem: U): ListNode[U] \u003d\n    ListNode(elem, this)\n}\n\nval a \u003d new ListNode(1, null) // T \u003d Int\nval b \u003d a.prepend(1L)         // T \u003d AnyVal\nval c \u003d b.prepend(\"abc\")      // T \u003d Any\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422170730531_760927640",
+      "id": "20150125-022530_1460919724",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eLower Bound\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003ecase class ListNode[+T](h: T, t: ListNode[T]) {\n  def head: T \u003d h\n  def tail: ListNode[T] \u003d t\n\n  // U must be the parent class(or the same class) of T\n  def prepend[U \u0026gt;: T](elem: U): ListNode[U] \u003d\n    ListNode(elem, this)\n}\n\nval a \u003d new ListNode(1, null) // T \u003d Int\nval b \u003d a.prepend(1L)         // T \u003d AnyVal\nval c \u003d b.prepend(\"abc\")      // T \u003d Any\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 2:25:30 AM",
+      "dateStarted": "Jan 25, 2015 2:55:58 AM",
+      "dateFinished": "Jan 25, 2015 2:55:58 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- View Bound (Is deprecated)\n\nUsually we have the function definition like:\n\n```\ndef f[A \u003c% B](a: A) \u003d a.bMethod\nor\ndef f[A](a: A)(implicit ev: A \u003d\u003e B) \u003d a.bMethod\n```\n\n\n```\nimplicit def strToInt(x: String) \u003d x.toInt\n\nobject MyMath { \n  def addIt[A \u003c% Int](x: A) \u003d 123 + x \n  def max[A \u003c% Int](a: A, b: A): Int \u003d if (a \u003e b) a else b\n}\n\nMyMath.max(\"123\", \"234\") // 234\nMyMath.addIt(1) // 124\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422172310331_-1234262048",
+      "id": "20150125-025150_1719281134",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eView Bound (Is deprecated)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eUsually we have the function definition like:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edef f[A \u0026lt;% B](a: A) \u003d a.bMethod\nor\ndef f[A](a: A)(implicit ev: A \u003d\u0026gt; B) \u003d a.bMethod\n\u003c/code\u003e\u003c/pre\u003e\n\u003cpre\u003e\u003ccode\u003e```\nimplicit def strToInt(x: String) \u003d x.toInt\n\nobject MyMath { \n  def addIt[A \u0026lt;% Int](x: A) \u003d 123 + x \n  def max[A \u0026lt;% Int](a: A, b: A): Int \u003d if (a \u0026gt; b) a else b\n}\n\nMyMath.max(\"123\", \"234\") // 234\nMyMath.addIt(1) // 124\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 2:51:50 AM",
+      "dateStarted": "Jan 25, 2015 3:09:28 AM",
+      "dateFinished": "Jan 25, 2015 3:09:28 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Context Bound\n\nUsually we have the function definition like:\n\n```\n // the function h requires input paramemter in the type of B[A]\ndef g[A : B](a: A) \u003d h(a)\ndef g[A](a: A)(implicit ev: B[A]) \u003d h(a)\n\ndef f[A](a: A, b: A)(implicit ord: Ordering[A]) \u003d ord.compare(a, b)\ndef f[A : Numeric](a: A, b: A) \u003d implicitly[Numeric[A]].plus(a, b)\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422173368804_1778811092",
+      "id": "20150125-030928_401920567",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eContext Bound\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eUsually we have the function definition like:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e // the function h requires input paramemter in the type of B[A]\ndef g[A : B](a: A) \u003d h(a)\ndef g[A](a: A)(implicit ev: B[A]) \u003d h(a)\n\ndef f[A](a: A, b: A)(implicit ord: Ordering[A]) \u003d ord.compare(a, b)\ndef f[A : Numeric](a: A, b: A) \u003d implicitly[Numeric[A]].plus(a, b)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 3:09:28 AM",
+      "dateStarted": "Jan 25, 2015 3:15:35 AM",
+      "dateFinished": "Jan 25, 2015 3:15:35 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Abstract type members\n\nIn a trait, you can leave type members abstract.\n\n```\n// Type Memeber Version\ntrait Getter { \n  type A\n  var x: A\n  def getX: A \u003d x \n}\n\ntrait Setter {\n  type A\n  var x: A\n  def setX(x: A) {\n    this.x \u003d x\n  }\n}\n\nclass IntFoo extends Getter with Setter { \n  type A \u003d Int\n  var x \u003d 123\n}\n   \nclass StringFoo extends Getter with Setter { \n  type A \u003d String\n  var x \u003d \"hey\"\n}\n\n\n// Or the Generic Parameter Type Version\ntrait Getter[A] {\n  var x: A\n  def getX: A \u003d x\n}\n\ntrait Setter[A] {\n  var x: A\n  def setX(x: A) {\n    this.x \u003d x\n  }\n}\n\nclass IntFoo(var x: Int) extends Getter[Int] with Setter[Int]\nclass StringFoo(var x: String) extends Getter[String] with Setter[String]\n```\n\nMore discussion: http://stackoverflow.com/questions/1154571/scala-abstract-types-vs-generics\n",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422173620572_2033482571",
+      "id": "20150125-031340_684713824",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eAbstract type members\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn a trait, you can leave type members abstract.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Type Memeber Version\ntrait Getter { \n  type A\n  var x: A\n  def getX: A \u003d x \n}\n\ntrait Setter {\n  type A\n  var x: A\n  def setX(x: A) {\n    this.x \u003d x\n  }\n}\n\nclass IntFoo extends Getter with Setter { \n  type A \u003d Int\n  var x \u003d 123\n}\n\nclass StringFoo extends Getter with Setter { \n  type A \u003d String\n  var x \u003d \"hey\"\n}\n\n\n// Or the Generic Parameter Type Version\ntrait Getter[A] {\n  var x: A\n  def getX: A \u003d x\n}\n\ntrait Setter[A] {\n  var x: A\n  def setX(x: A) {\n    this.x \u003d x\n  }\n}\n\nclass IntFoo(var x: Int) extends Getter[Int] with Setter[Int]\nclass StringFoo(var x: String) extends Getter[String] with Setter[String]\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eMore discussion: http://stackoverflow.com/questions/1154571/scala-abstract-types-vs-generics\u003c/p\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 3:13:40 AM",
+      "dateStarted": "Jan 25, 2015 3:47:58 AM",
+      "dateFinished": "Jan 25, 2015 3:47:58 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Contra-variance\n\n```\ncase class ListNode2[+T](h: T, t: ListNode2[T]) {\n  def head: T \u003d h\n  def tail: ListNode2[T] \u003d t\n  def prepend[U \u003e: T](elem: U): ListNode2[U] \u003d\n    ListNode2(elem, this)\n}\n\nval a \u003d ListNode2[String](\"null\", null)\na.prepend(\"a\").prepend(\"b\") // ListNode2[String]\na.prepend(\"a\").prepend(123) // ListNode2[Any]\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422174735533_896891637",
+      "id": "20150125-033215_2044530004",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eContra-variance\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003ecase class ListNode2[+T](h: T, t: ListNode2[T]) {\n  def head: T \u003d h\n  def tail: ListNode2[T] \u003d t\n  def prepend[U \u0026gt;: T](elem: U): ListNode2[U] \u003d\n    ListNode2(elem, this)\n}\n\nval a \u003d ListNode2[String](\"null\", null)\na.prepend(\"a\").prepend(\"b\") // ListNode2[String]\na.prepend(\"a\").prepend(123) // ListNode2[Any]\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 3:32:15 AM",
+      "dateStarted": "Jan 25, 2015 3:49:57 AM",
+      "dateFinished": "Jan 25, 2015 3:49:57 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Explicit Self-Type Reference\n\nNormally used in the Dependency Injection\n\n```\nabstract class ConnectionPool {\n  def getConnection: java.sql.Connection\n}\n\nabstract class MySQLConnectionPool extends ConnectionPool {\n  def getConnection: java.sql.Connection \u003d {\n    println(\"getting MySQL connection\")\n    null\n  }\n}\n\ntrait SQLServerConnectionPool extends ConnectionPool {\n  def getConnection: java.sql.Connection \u003d {\n    println(\"getting SQL Server connection\")\n    null\n  }\n}\n\ntrait UserDao {\n  self: ConnectionPool \u003d\u003e\n  def authenticate(user: String, pass: String) \u003d {\n    val conn \u003d getConnection\n    println (\"authenticating..\")\n    true\n  }\n}\n\ntrait BusinessDao {\n  self: ConnectionPool \u003d\u003e\n  def makeDeal(fromUser: String, toUser: String, deal: Int) {\n    val conn \u003d getConnection\n    println(s\"making deal $fromUser -\u003e $toUser: deal: $deal\")\n  }\n}\n\n// Dependencies Injection\nval dao \u003d new SQLServerConnectionPool with UserDao\ndao.authenticate(\"user1\", \"pass1\")\nval dao2 \u003d new  MySQLConnectionPool with UserDao with BusinessDao\ndao2.authenticate(\"user1\", \"pass1\")\n\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422175797260_-677011610",
+      "id": "20150125-034957_562126681",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eExplicit Self-Type Reference\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eNormally used in the Dependency Injection\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eabstract class ConnectionPool {\n  def getConnection: java.sql.Connection\n}\n\nabstract class MySQLConnectionPool extends ConnectionPool {\n  def getConnection: java.sql.Connection \u003d {\n    println(\"getting MySQL connection\")\n    null\n  }\n}\n\ntrait SQLServerConnectionPool extends ConnectionPool {\n  def getConnection: java.sql.Connection \u003d {\n    println(\"getting SQL Server connection\")\n    null\n  }\n}\n\ntrait UserDao {\n  self: ConnectionPool \u003d\u0026gt;\n  def authenticate(user: String, pass: String) \u003d {\n    val conn \u003d getConnection\n    println (\"authenticating..\")\n    true\n  }\n}\n\ntrait BusinessDao {\n  self: ConnectionPool \u003d\u0026gt;\n  def makeDeal(fromUser: String, toUser: String, deal: Int) {\n    val conn \u003d getConnection\n    println(s\"making deal $fromUser -\u0026gt; $toUser: deal: $deal\")\n  }\n}\n\n// Dependencies Injection\nval dao \u003d new SQLServerConnectionPool with UserDao\ndao.authenticate(\"user1\", \"pass1\")\nval dao2 \u003d new  MySQLConnectionPool with UserDao with BusinessDao\ndao2.authenticate(\"user1\", \"pass1\")\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 3:49:57 AM",
+      "dateStarted": "Jan 25, 2015 3:51:37 AM",
+      "dateFinished": "Jan 25, 2015 3:51:37 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422175850242_1077720854",
+      "id": "20150125-035050_1483170899",
+      "dateCreated": "Jan 25, 2015 3:50:50 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Generic Class",
+  "id": "2AD5DTKDM"
+}

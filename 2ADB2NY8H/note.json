@@ -1,0 +1,194 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n- Class\n\n```\nimport scala.beans.BeanProperty\n\nabstract class Colorable(@BeanProperty  var color: Int)\n\nclass Point(protected var xc: Int, protected var yc: Int, color: Int) extends Colorable(color) {\n  def this() \u003d this(Int.MaxValue, Int.MaxValue, Int.MaxValue)\n  \n  def step(dx: Int, dy: Int) {\n    this.xc \u003d  this.xc + dx\n    this.xc \u003d  this.xc + dy\n  }\n  def move(x: Int, y: Int) \u003d {\n    this.xc \u003d x\n    this.yc \u003d y\n    this\n  }\n  override def toString(): String \u003d s\"($xc, $yc, $color)\"\n}\n\nval pt \u003d new Point (1,2,3)\npt.setColor(456)\nprintln(pt.getColor())\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422013708700_-44178252",
+      "id": "20150123-064828_1952126748",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eClass\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eimport scala.beans.BeanProperty\n\nabstract class Colorable(@BeanProperty  var color: Int)\n\nclass Point(protected var xc: Int, protected var yc: Int, color: Int) extends Colorable(color) {\n  def this() \u003d this(Int.MaxValue, Int.MaxValue, Int.MaxValue)\n\n  def step(dx: Int, dy: Int) {\n    this.xc \u003d  this.xc + dx\n    this.xc \u003d  this.xc + dy\n  }\n  def move(x: Int, y: Int) \u003d {\n    this.xc \u003d x\n    this.yc \u003d y\n    this\n  }\n  override def toString(): String \u003d s\"($xc, $yc, $color)\"\n}\n\nval pt \u003d new Point (1,2,3)\npt.setColor(456)\nprintln(pt.getColor())\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 6:48:28 AM",
+      "dateStarted": "Jan 25, 2015 1:15:07 AM",
+      "dateFinished": "Jan 25, 2015 1:15:07 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Case Class\n\n-- pattern matching support\n-- default implementations of equals and hashCode\n-- default implementations of serialization\n-- a prettier default implementation of toString, and\n-- the small amount of functionality that they get from automatically inheriting from scala.Product\n\n```\ncase class Point (x: Int, y: Int, color: Int)\nval pt \u003d Point(1, 2, 3)\npt.productIterator.foreach(println)\n\nabstract class Colorable {\n  def color: Int\n}\ncase class Point(x: Int, y: Int, color: Int) extends Colorable\nval pt \u003d Point(1, 2, 3)\nprintln(pt.isInstanceOf[Product])\n\npt.productIterator.foreach(println)\npt.productElement(0)\nprintln(pt.toString)\n```\n",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422166495960_-861041786",
+      "id": "20150125-011455_41225850",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eCase Class\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u0026ndash; pattern matching support\n\u003cbr  /\u003e\u0026ndash; default implementations of equals and hashCode\n\u003cbr  /\u003e\u0026ndash; default implementations of serialization\n\u003cbr  /\u003e\u0026ndash; a prettier default implementation of toString, and\n\u003cbr  /\u003e\u0026ndash; the small amount of functionality that they get from automatically inheriting from scala.Product\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecase class Point (x: Int, y: Int, color: Int)\nval pt \u003d Point(1, 2, 3)\npt.productIterator.foreach(println)\n\nabstract class Colorable {\n  def color: Int\n}\ncase class Point(x: Int, y: Int, color: Int) extends Colorable\nval pt \u003d Point(1, 2, 3)\nprintln(pt.isInstanceOf[Product])\n\npt.productIterator.foreach(println)\npt.productElement(0)\nprintln(pt.toString)\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 1:14:55 AM",
+      "dateStarted": "Jan 25, 2015 1:16:50 AM",
+      "dateFinished": "Jan 25, 2015 1:16:50 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Inner Class\n\n```\nclass Graph {\n  class Node {\n    var connectedNodes: List[Node] \u003d Nil\n  }\n  var nodes: List[Node] \u003d Nil\n  \n  def newNode: Node \u003d {\n    val res \u003d new Node\n    nodes \u003d res :: nodes\n    res\n  }\n  \n  def addNode(node: Node): this.Node \u003d {\n    nodes \u003d node :: nodes\n    node\n  }\n}\n\nval g1 \u003d new Graph\nval n \u003d g1.newNode\ng1.addNode(n)\n\nval g2 \u003d new Graph\nval g2.addNode(n) // error found g1.Node, require g2.Node\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422166558045_1153426834",
+      "id": "20150125-011558_2090134289",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eInner Class\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003eclass Graph {\n  class Node {\n    var connectedNodes: List[Node] \u003d Nil\n  }\n  var nodes: List[Node] \u003d Nil\n\n  def newNode: Node \u003d {\n    val res \u003d new Node\n    nodes \u003d res :: nodes\n    res\n  }\n\n  def addNode(node: Node): this.Node \u003d {\n    nodes \u003d node :: nodes\n    node\n  }\n}\n\nval g1 \u003d new Graph\nval n \u003d g1.newNode\ng1.addNode(n)\n\nval g2 \u003d new Graph\nval g2.addNode(n) // error found g1.Node, require g2.Node\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 1:15:58 AM",
+      "dateStarted": "Jan 25, 2015 1:17:20 AM",
+      "dateFinished": "Jan 25, 2015 1:17:20 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Trait\n\n```\ntrait Similarity[T] {\n  var threshold: Int \u003d 100\n  def isSimilar(x: T): Boolean\n  def isNotSimilar(x: T): Boolean \u003d !isSimilar(x)\n}\n\ntrait Moveable[T] {\n  def move(other: T): T\n}\n\nabstract class Colorable(val color: Int)\nclass Point(var x: Int, var y: Int, color: Int) extends Colorable(color) with Similarity[Point] with Moveable[Point] {\n  def isSimilar(that: Point): Boolean \u003d if (that \u003d\u003d null) {\n    false\n  } else if (Math.abs(x - that.x) \u003c threshold \u0026\u0026 Math.abs(y - that.y) \u003c threshold) {\n    true\n  } else {\n    false\n  }\n  def move(other: Point) \u003d {\n    this.x \u003d other.x\n    this.y \u003d other.y\n    this\n  }\n}\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422166640607_-1412974212",
+      "id": "20150125-011720_839323317",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eTrait\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003etrait Similarity[T] {\n  var threshold: Int \u003d 100\n  def isSimilar(x: T): Boolean\n  def isNotSimilar(x: T): Boolean \u003d !isSimilar(x)\n}\n\ntrait Moveable[T] {\n  def move(other: T): T\n}\n\nabstract class Colorable(val color: Int)\nclass Point(var x: Int, var y: Int, color: Int) extends Colorable(color) with Similarity[Point] with Moveable[Point] {\n  def isSimilar(that: Point): Boolean \u003d if (that \u003d\u003d null) {\n    false\n  } else if (Math.abs(x - that.x) \u0026lt; threshold \u0026amp;\u0026amp; Math.abs(y - that.y) \u0026lt; threshold) {\n    true\n  } else {\n    false\n  }\n  def move(other: Point) \u003d {\n    this.x \u003d other.x\n    this.y \u003d other.y\n    this\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 1:17:20 AM",
+      "dateStarted": "Jan 25, 2015 1:17:58 AM",
+      "dateFinished": "Jan 25, 2015 1:17:58 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Anonymous Class\n\n```\ntrait SimpleTrait {\n  def add1(x: Int) \u003d { x + 1 }\n  def add2(x: Int)\n}\n\nabstract class SimpleClass {\n  def add3(x: Int) \u003d { x + 3 }\n  def add4(x: Int)\n}\n\nval a \u003d new SimpleClass {\n  def add4(x: Int) \u003d x + 4\n}\n\nval a \u003d new SimpleTrait {\n  def add2(x: Int) \u003d x + 2\n}\n\nval a \u003d new SimpleClass with SimpleTrait {\n  def add2(x: Int) \u003d x + 2\n  def add4(x: Int) \u003d x + 4\n}\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422166678477_505630635",
+      "id": "20150125-011758_1195104374",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eAnonymous Class\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003etrait SimpleTrait {\n  def add1(x: Int) \u003d { x + 1 }\n  def add2(x: Int)\n}\n\nabstract class SimpleClass {\n  def add3(x: Int) \u003d { x + 3 }\n  def add4(x: Int)\n}\n\nval a \u003d new SimpleClass {\n  def add4(x: Int) \u003d x + 4\n}\n\nval a \u003d new SimpleTrait {\n  def add2(x: Int) \u003d x + 2\n}\n\nval a \u003d new SimpleClass with SimpleTrait {\n  def add2(x: Int) \u003d x + 2\n  def add4(x: Int) \u003d x + 4\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 1:17:58 AM",
+      "dateStarted": "Jan 25, 2015 1:19:52 AM",
+      "dateFinished": "Jan 25, 2015 1:19:52 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Implicit Class\n\nRestrictions:\n1. They must be defined inside of another trait/class/object\n2. They may only take one non-implicit argument in their constructor.\n3. There may not be any method, member or object in scope with the same name as the implicit class.\n\n\n```\nobject Helpers {\n  implicit class IntWithTimes(x: Int) {\n    def times[A](f: \u003d\u003e A): Unit \u003d {\n      def loop(current: Int): Unit \u003d\n        if(current \u003e 0) {\n          f\n          loop(current - 1)\n        }\n      loop(x)\n    }\n  }\n}\n\nimport Helpers._\n5.times(println(\"HI\"))\n\n```\n\nA more concrete example:\n\n```scala\nclass RDD(data: String) {\n  def collect() \u003d data\n  def compute() \u003d println(\"processing..\")\n}\n\nabstract class SQLContext {\n  def env: String\n  def sql(strText: String): RDD \u003d new RDD(s\"[$env]result of executing $strText\")\n}\n\nobject LocalMode {\n  implicit object sqlContext extends SQLContext {\n    def env \u003d \"LocalMode\"\n  }\n}\n\nobject ClusterMode {\n  implicit object sqlContext extends SQLContext {\n    def env \u003d \"ClusterMode\"\n  }\n}\n\nobject myApp {\n  // will search SQLContext instance from the scope\n  implicit class SqlExecutor(sql: String)(implicit context: SQLContext) {\n    def run \u003d {\n      val rdd \u003d context.sql(sql)\n      rdd.compute()\n      rdd.collect()\n    }\n  }\n}\n\nimport myApp._\nimport ClusterMode._  // import LocalMode._\n\"select * from src\".run\n\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422166792081_258037878",
+      "id": "20150125-011952_528749090",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eImplicit Class\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eRestrictions:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eThey must be defined inside of another trait/class/object\u003c/li\u003e\n\u003cli\u003eThey may only take one non-implicit argument in their constructor.\u003c/li\u003e\n\u003cli\u003eThere may not be any method, member or object in scope with the same name as the implicit class.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003eobject Helpers {\n  implicit class IntWithTimes(x: Int) {\n    def times[A](f: \u003d\u0026gt; A): Unit \u003d {\n      def loop(current: Int): Unit \u003d\n        if(current \u0026gt; 0) {\n          f\n          loop(current - 1)\n        }\n      loop(x)\n    }\n  }\n}\n\nimport Helpers._\n5.times(println(\"HI\"))\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eA more concrete example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003eclass RDD(data: String) {\n  def collect() \u003d data\n  def compute() \u003d println(\"processing..\")\n}\n\nabstract class SQLContext {\n  def env: String\n  def sql(strText: String): RDD \u003d new RDD(s\"[$env]result of executing $strText\")\n}\n\nobject LocalMode {\n  implicit object sqlContext extends SQLContext {\n    def env \u003d \"LocalMode\"\n  }\n}\n\nobject ClusterMode {\n  implicit object sqlContext extends SQLContext {\n    def env \u003d \"ClusterMode\"\n  }\n}\n\nobject myApp {\n  // will search SQLContext instance from the scope\n  implicit class SqlExecutor(sql: String)(implicit context: SQLContext) {\n    def run \u003d {\n      val rdd \u003d context.sql(sql)\n      rdd.compute()\n      rdd.collect()\n    }\n  }\n}\n\nimport myApp._\nimport ClusterMode._  // import LocalMode._\n\"select * from src\".run\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 1:19:52 AM",
+      "dateStarted": "Jan 25, 2015 1:27:58 AM",
+      "dateFinished": "Jan 25, 2015 1:27:58 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Operators\n\n```scala\ncase class N(val x: Int) {\n  def +(that: N) \u003d N(x + that.x)\n  def add(that: N) \u003d this + that\n\n  def -(that: N) \u003d N(x - that.x)\n  def minus(that: N) \u003d this - that\n  \n  def - \u003d N(-x)\n  def negate \u003d this -; // ; is required, it may causes ambiguities\n  def unary_- \u003d this -; // this is a hack\n}\n\n-(N(2) + N(3)) // functional style\n((N(2).+(N(3)))).- // OO style\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422166939968_-840065608",
+      "id": "20150125-012219_2069097123",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eOperators\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003ecase class N(val x: Int) {\n  def +(that: N) \u003d N(x + that.x)\n  def add(that: N) \u003d this + that\n\n  def -(that: N) \u003d N(x - that.x)\n  def minus(that: N) \u003d this - that\n\n  def - \u003d N(-x)\n  def negate \u003d this -; // ; is required, it may causes ambiguities\n  def unary_- \u003d this -; // this is a hack\n}\n\n-(N(2) + N(3)) // functional style\n((N(2).+(N(3)))).- // OO style\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 1:22:19 AM",
+      "dateStarted": "Jan 25, 2015 1:30:14 AM",
+      "dateFinished": "Jan 25, 2015 1:30:14 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n- Object \u0026 Companion Object\n\nSome most used function, which called implicitly\n1. def apply\n2. def unapply\n3. def update\n\n```\nclass Point (val x: Int, val y: Int, val color: Int)\n\nobject ConstantShape {\n  val defaultColor \u003d Int.MinValue    \n}\n\n// object is singleton\nobject Point { // companion object with the same name of the class, must defined in the file of the class\n  val defaultColor \u003d ConstantShape.defaultColor\n    // built-in function\n  def apply(x: Int, y: Int): Point \u003d new Point(x, y, defaultColor)\n  def apply(x: Int, y: Int, color: Int): Point \u003d new Point(x, y, color)\n}\n\nPoint(1, 2)  // Point.apply(1, 2), without the companion object we have to add the “new” e.g. val a \u003d new Point(1,2,3)\nPoint(1, 2, 3) // Point.apply(1, 2, 3)\n\nclass Row(val values: Array[Any]) {\n  def apply(ordinal: Int): Any \u003d values(ordinal)\n  def apply(ordinal: Int, defaultValue: Any): Any \u003d {\n    if (values(ordinal) \u003d\u003d null) {\n      defaultValue\n    } else {\n      values(ordinal)\n    }\n  }\n\n  def update(ordinal: Int, value: Any) {\n     values(ordinal) \u003d value\n  }\n}\n\nval row \u003d new Row(Array(1, \"abc\"))\nrow(0) \u003d null // update\nprintln(row(0)) // call the apply version 1\nprintln(row(0, \"aaaa\")) // call the apply version 2\n\n\nobject Extractor { // extractor\n  def unapply(input: String): Option[(Int, Int, Int)] \u003d if (input !\u003d null) {\n    val parts \u003d input.split(\",\")\n    if (parts.length \u003d\u003d 3) {\n      // TODO more checking\n      Some((parts(0).toInt, parts(1).toInt, parts(2).toInt))\n    } else {\n      None\n    }\n  } else {\n    None\n  }\n}\n\n\"1,2,3\" match {\n  case Extractor(x, y, color) \u003d\u003e println (s\"$x  $y  $color\")\n  case _ \u003d\u003e sys.error(\"something wrong!\")\n}\n\n\"1,2,3,4\" match {\n  case Extractor(x, y, color) \u003d\u003e println (s\"$x  $y  $color\")\n  case _ \u003d\u003e sys.error(\"something wrong!\")\n}\n\n```\n",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422167380560_790527590",
+      "id": "20150125-012940_372073631",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cul\u003e\n\u003cli\u003eObject \u0026amp; Companion Object\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eSome most used function, which called implicitly\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003edef apply\u003c/li\u003e\n\u003cli\u003edef unapply\u003c/li\u003e\n\u003cli\u003edef update\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003eclass Point (val x: Int, val y: Int, val color: Int)\n\nobject ConstantShape {\n  val defaultColor \u003d Int.MinValue    \n}\n\n// object is singleton\nobject Point { // companion object with the same name of the class, must defined in the file of the class\n  val defaultColor \u003d ConstantShape.defaultColor\n    // built-in function\n  def apply(x: Int, y: Int): Point \u003d new Point(x, y, defaultColor)\n  def apply(x: Int, y: Int, color: Int): Point \u003d new Point(x, y, color)\n}\n\nPoint(1, 2)  // Point.apply(1, 2), without the companion object we have to add the “new” e.g. val a \u003d new Point(1,2,3)\nPoint(1, 2, 3) // Point.apply(1, 2, 3)\n\nclass Row(val values: Array[Any]) {\n  def apply(ordinal: Int): Any \u003d values(ordinal)\n  def apply(ordinal: Int, defaultValue: Any): Any \u003d {\n    if (values(ordinal) \u003d\u003d null) {\n      defaultValue\n    } else {\n      values(ordinal)\n    }\n  }\n\n  def update(ordinal: Int, value: Any) {\n     values(ordinal) \u003d value\n  }\n}\n\nval row \u003d new Row(Array(1, \"abc\"))\nrow(0) \u003d null // update\nprintln(row(0)) // call the apply version 1\nprintln(row(0, \"aaaa\")) // call the apply version 2\n\n\nobject Extractor { // extractor\n  def unapply(input: String): Option[(Int, Int, Int)] \u003d if (input !\u003d null) {\n    val parts \u003d input.split(\",\")\n    if (parts.length \u003d\u003d 3) {\n      // TODO more checking\n      Some((parts(0).toInt, parts(1).toInt, parts(2).toInt))\n    } else {\n      None\n    }\n  } else {\n    None\n  }\n}\n\n\"1,2,3\" match {\n  case Extractor(x, y, color) \u003d\u0026gt; println (s\"$x  $y  $color\")\n  case _ \u003d\u0026gt; sys.error(\"something wrong!\")\n}\n\n\"1,2,3,4\" match {\n  case Extractor(x, y, color) \u003d\u0026gt; println (s\"$x  $y  $color\")\n  case _ \u003d\u0026gt; sys.error(\"something wrong!\")\n}\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 25, 2015 1:29:40 AM",
+      "dateStarted": "Jan 25, 2015 2:02:58 AM",
+      "dateFinished": "Jan 25, 2015 2:02:58 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422167545963_921973797",
+      "id": "20150125-013225_718732323",
+      "dateCreated": "Jan 25, 2015 1:32:25 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Class \u0026 Object",
+  "id": "2ADB2NY8H"
+}

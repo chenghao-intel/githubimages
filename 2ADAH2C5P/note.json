@@ -1,0 +1,40 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\nIn Java\n\n```java\npublic static void main(String[] args) {\n  int x \u003d 0;\n  new Runnable() {\n    public void run() {\n        x \u003d 1; // compilation error\n    }\n  }.run();\n}\n  \n```\n\nIn scala\n\n```scala\nvar constant\u003d1\ndef addX(x: Int) \u003d x + constant\ndef updateConstant(x: Int) { constant \u003d x }\nprintln(addX(100)) // prints 101\nupdateConstant(100)\nprintln(constant) // prints 100\nprintln(addX(100)) // prints 200\nconstant\u003d2\nprintln(addX(100)) // prints 200\n\n// In a distributed system, probably the closure doesn\u0027t work as expected\n```",
+      "config": {
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422013708715_-60722454",
+      "id": "20150123-064828_139094770",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cp\u003eIn Java\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"java\"\u003epublic static void main(String[] args) {\n  int x \u003d 0;\n  new Runnable() {\n    public void run() {\n        x \u003d 1; // compilation error\n    }\n  }.run();\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eIn scala\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003evar constant\u003d1\ndef addX(x: Int) \u003d x + constant\ndef updateConstant(x: Int) { constant \u003d x }\nprintln(addX(100)) // prints 101\nupdateConstant(100)\nprintln(constant) // prints 100\nprintln(addX(100)) // prints 200\nconstant\u003d2\nprintln(addX(100)) // prints 200\n\n// In a distributed system, probably the closure doesn\u0027t work as expected\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Jan 23, 2015 6:48:28 AM",
+      "dateStarted": "Jan 25, 2015 3:54:32 AM",
+      "dateFinished": "Jan 25, 2015 3:54:32 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1422176001909_-498379206",
+      "id": "20150125-035321_539753602",
+      "dateCreated": "Jan 25, 2015 3:53:21 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Closure",
+  "id": "2ADAH2C5P"
+}
